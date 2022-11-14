@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dao/tv/subject.dart';
+import 'package:flutter_application_1/service/http.dart';
 import '../dao/picture.dart';
 import '../service/get_pic_data.dart';
 
@@ -12,10 +14,15 @@ class ClosetScaffold extends StatefulWidget {
 
 class _ClosetScaffoldState extends State<ClosetScaffold> {
   // 获取网格视图内的Item Widget
-  List<Picture> data = getPicData();
-  // 获取LeanCloud数据
-  void _getFromLeanCloud() {
-    print("title");
+  List<Subject> data = [];
+  // 获取豆瓣电视剧
+  _getTVDetailsFuture() {
+    print("object");
+    // getTVDetails().then((value) => () {
+    //       setState(() {
+    //         data = value.subjects as List<Subject>;
+    //       });
+    //     });
   }
 
   Widget _getGridItemWidget(i) {
@@ -28,13 +35,13 @@ class _ClosetScaffoldState extends State<ClosetScaffold> {
         children: [
           Expanded(
             child: Image.network(
-              data[i].url,
+              data[i].cover ?? "",
               fit: BoxFit.cover,
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Text(data[i].title),
+            child: Text(data[i].title ?? "未获取到数据"),
           )
         ],
       ),
@@ -54,7 +61,7 @@ class _ClosetScaffoldState extends State<ClosetScaffold> {
         children: List.generate(data.length, (i) => _getGridItemWidget(i)),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getFromLeanCloud,
+        onPressed: _getTVDetailsFuture,
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(items: const [

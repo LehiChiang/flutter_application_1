@@ -35,7 +35,8 @@ class Picture {
 
   String toJson() => json.encode(toMap());
 
-  factory Picture.fromJson(String source) => Picture.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Picture.fromJson(String source) =>
+      Picture.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'Picture(url: $url, title: $title)';
@@ -43,10 +44,8 @@ class Picture {
   @override
   bool operator ==(covariant Picture other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.url == url &&
-      other.title == title;
+
+    return other.url == url && other.title == title;
   }
 
   @override

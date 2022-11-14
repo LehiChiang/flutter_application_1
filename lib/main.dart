@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:leancloud_storage/leancloud.dart';
 import 'router/scaffold.dart';
 
 void main() {
-  LeanCloud.initialize(
-      'RsD7OEwK4mdOW0yps4rBr72X-gzGzoHsz', 'pnUAD77WW647Q2UpBoFYWafa',
-      server: 'https://rsd7oewk.lc-cn-n1-npxfk.com',
-      queryCache: LCQueryCache());
   runApp(const Closet());
 }
 
